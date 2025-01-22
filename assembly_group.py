@@ -27,24 +27,24 @@ if __name__ == '__main__':
     app.layout = html.Div([
         html.H1("제22대 국회 의견 지형", style={'textAlign': 'center'}),
         html.Label("국회의원 이름 검색:", style={'margin': '10px 0'}),
-        dcc.Input(
-            id='search-input',
-            type='text',
-            placeholder='이름을 입력하세요',
-            debounce=True,
-            style={
-                'width' : '100%',
-                'maxWidth': '2000px',
-                'padding': '10px',
-                'margin-bottom' : '20px',
-                'boxSizing':'border-box',
-            }
-        ),
+        html.Div([
+            dcc.Input(
+                id='search-input',
+                type='text',
+                placeholder='이름을 입력하세요',
+                debounce=True,
+                style={
+                    'width' : '90%',
+                    'padding': '10px',
+                    'margin-bottom' : '20px',
+                    'boxSizing':'border-box',
+                }
+            ),
+        ], style={ 'display': 'flex', 'justifyContent':'center'}),
         dcc.Graph(id='scatter-plot',
                   style={
                       'width': '100%',
                       'height': '100%',
-                      'maxWidth': '600px',
                       'margin': '0 auto',
                   }),
         daq.BooleanSwitch(
@@ -52,7 +52,7 @@ if __name__ == '__main__':
             on=False,
             label='이름 보이기',
             labelPosition='top',
-            style={'margin': '20px 0', 'textAlign': 'center'},
+            style={'margin': '10px 0', 'textAlign': 'center'},
         ),
         dcc.Markdown(
             """
@@ -146,15 +146,15 @@ if __name__ == '__main__':
                 font_size=12,
                 bgcolor='white',
             ),
-            xaxis_title="X축",
-            yaxis_title="Y축",
+            xaxis_title="",
+            yaxis_title="",
             legend_title="정당",
             legend=dict(
                 orientation='h',
                 yanchor='bottom',
                 y=-0.5,
                 xanchor='center',
-                x=0.5
+                x=0,
             ),
             hovermode='closest',
             title=dict(
